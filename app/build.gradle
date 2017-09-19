@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'realm-android'
+
+
+buildscript {
+    ext.moxy_version = '1.5.3'
+    ext.dagger_version = '2.7'
+    ext.butterknife_version = '8.8.1'
+    ext.support_version = '26.1.0'
+    ext.constraint_layout_version = '1.0.2'
+    ext.rxkotlin_version = '2.0.0'
+    ext.anko_version = '0.10.1'
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.moxymvp.starter"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:design:$support_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //ButterKnife
+    compile "com.jakewharton:butterknife:$butterknife_version"
+    kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
+
+    // Moxy MVP
+    compile "com.arello-mobile:moxy:$moxy_version"
+    annotationProcessor "com.arello-mobile:moxy-compiler:$moxy_version"
+    compile "com.arello-mobile:moxy-android:$moxy_version"
+    compile "com.arello-mobile:moxy-app-compat:$moxy_version"
+    kapt "com.arello-mobile:moxy-compiler:$moxy_version"
+
+    //Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Anko Commons
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
+
+    //DAGGER 2
+    compile "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //Rx
+    compile "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+
+    //Gson
+    compile 'com.google.code.gson:gson:2.8.1'
+
+    //RealmAdapters
+    compile 'io.realm:android-adapters:2.1.0'
+}
+kapt {
+    generateStubs = true
+}
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
+}
