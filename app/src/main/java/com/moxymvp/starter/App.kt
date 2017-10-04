@@ -5,8 +5,12 @@ import com.moxymvp.starter.dagger.component.AppComponent
 import com.moxymvp.starter.dagger.component.DaggerAppComponent
 import com.moxymvp.starter.dagger.module.AppModule
 import com.moxymvp.starter.dagger.module.StorageModule
+import com.moxymvp.starter.logger.debug.DebugTree
+import com.moxymvp.starter.logger.debug.FileLoggingDebugTree
+import com.moxymvp.starter.logger.release.ReleaseTree
 import io.realm.Realm
 import io.realm.RealmConfiguration
+import timber.log.Timber
 
 
 /**
@@ -21,8 +25,18 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        setupLogger()
         configureDagger()
         configureRealm()
+    }
+
+    private fun setupLogger() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(DebugTree())
+            Timber.plant(FileLoggingDebugTree())
+        } else {
+            Timber.plant(ReleaseTree())
+        }
     }
 
     private fun configureDagger() {

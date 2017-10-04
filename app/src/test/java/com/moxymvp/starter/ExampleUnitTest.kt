@@ -1,4 +1,4 @@
-package com.blakit.qralarm
+package com.moxymvp.starter
 
 import org.junit.Test
 
