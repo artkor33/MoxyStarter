@@ -1,6 +1,9 @@
 package com.moxymvp.starter.presenter
 
+import android.text.TextUtils
 import com.arellomobile.mvp.MvpPresenter
+import com.getmeet.android.network.error_handling.ApiErrorListener
+import com.getmeet.android.network.error_handling.HttpError
 import com.moxymvp.starter.view.BaseView
 import io.realm.Realm
 
@@ -10,7 +13,7 @@ import io.realm.Realm
  * <href a="http://blak-it.com"></href>
  */
 
-abstract class BasePresenter<T : BaseView> : MvpPresenter<T>() {
+abstract class BasePresenter<T : BaseView> : MvpPresenter<T>(), ApiErrorListener {
 
     private var utilityWrapper: UtilityWrapper = UtilityWrapper()
 
@@ -23,5 +26,33 @@ abstract class BasePresenter<T : BaseView> : MvpPresenter<T>() {
     override fun onDestroy() {
         realm.close()
         super.onDestroy()
+    }
+
+    override fun onHttpErrors(errors: Collection<HttpError>) {
+        var msg = ""
+        errors.map { it.message }
+                .forEach {
+                    msg += it
+                }
+
+        if (!TextUtils.isEmpty(msg)) {
+            viewState.toastLong(msg)
+        }
+    }
+
+    override fun onHttpError(error: HttpError) {
+        if (!TextUtils.isEmpty(error.message)) {
+            viewState.toastShort(error.message!!)
+        }
+    }
+
+    override fun onNoInternetConnection() {
+        viewState.showNoInternetConnectionError()
+    }
+
+    override fun onGenericError(t: Throwable?) {
+        if (t != null && t.localizedMessage != null) {
+            viewState.toastLong(t.localizedMessage)
+        }
     }
 }

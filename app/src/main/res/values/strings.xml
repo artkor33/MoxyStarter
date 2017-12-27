@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MoxyMVP Starter</string>
+    <string name="settings">Settings</string>
+    <string name="msg_error_no_internet_connection">No Internet connection</string>
+    <string name="network_error_server">Server error</string>
+    <string name="network_error_unauthorized">Unauthorized</string>
 </resources>
