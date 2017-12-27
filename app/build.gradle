@@ -7,24 +7,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
 
 
-buildscript {
-    ext.moxy_version = '1.5.3'
-    ext.dagger_version = '2.7'
-    ext.butterknife_version = '8.8.1'
-    ext.support_version = '26.1.0'
-    ext.constraint_layout_version = '1.0.2'
-    ext.rxkotlin_version = '2.0.0'
-    ext.anko_version = '0.10.1'
-    ext.timber_version = '4.5.1'
-}
-
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
     defaultConfig {
         applicationId "com.moxymvp.starter"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -35,6 +24,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+ext {
+    moxy_version = '1.5.3'
+    dagger_version = '2.7'
+    butterknife_version = '8.8.1'
+    support_version = '27.0.2'
+    constraint_layout_version = '1.0.2'
+    rxkotlin_version = '2.0.0'
+    anko_version = '0.10.1'
+    timber_version = '4.5.1'
 }
 
 dependencies {

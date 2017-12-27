@@ -20,8 +20,8 @@ import org.jetbrains.anko.toast
 abstract class BaseFragmentView : MvpAppCompatFragment(), BaseView {
     private lateinit var unbinder: Unbinder
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater!!.inflate(getLayoutResID(), container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val v = inflater.inflate(getLayoutResID(), container, false)
         unbinder = ButterKnife.bind(this, v)
         setupView(savedInstanceState)
         return v
@@ -32,19 +32,19 @@ abstract class BaseFragmentView : MvpAppCompatFragment(), BaseView {
     abstract fun setupView(savedInstanceState: Bundle?)
 
     override fun toastShort(msg: String) {
-        activity.toast(msg)
+        activity?.toast(msg)
     }
 
     override fun toastShort(resId: Int) {
-        activity.toast(resId)
+        activity?.toast(resId)
     }
 
     override fun toastLong(msg: String) {
-        activity.longToast(msg)
+        activity?.longToast(msg)
     }
 
     override fun toastLong(resId: Int) {
-        activity.longToast(resId)
+        activity?.longToast(resId)
     }
 
     override fun onDestroyView() {
