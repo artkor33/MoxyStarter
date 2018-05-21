@@ -12,7 +12,7 @@ import timber.log.Timber
 class ReleaseTree : Timber.Tree() {
     override fun isLoggable(tag: String?, priority: Int) = priority == Log.ERROR || priority == Log.INFO
 
-    override fun log(priority: Int, tag: String?, message: String?, t: Throwable?) {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         if (priority == Log.ERROR && t != null) {
             //i.e.You can log exceptions via Crashlytics or sth else
         } else {

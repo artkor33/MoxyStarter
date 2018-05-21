@@ -4,12 +4,14 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'realm-android'
 
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.moxymvp.starter"
         minSdkVersion 19
@@ -30,11 +32,11 @@ ext {
     moxy_version = '1.5.3'
     dagger_version = '2.7'
     butterknife_version = '8.8.1'
-    support_version = '27.0.2'
+    support_version = '27.1.1'
     constraint_layout_version = '1.0.2'
     rxkotlin_version = '2.0.0'
     anko_version = '0.10.1'
-    timber_version = '4.5.1'
+    timber_version = '4.7.0'
     retrofit_version = '2.3.0'
     okhttp_version = '3.9.0'
 }
@@ -42,53 +44,52 @@ ext {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$support_version"
-    compile "com.android.support:design:$support_version"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation "com.android.support:design:$support_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     //ButterKnife
-    compile "com.jakewharton:butterknife:$butterknife_version"
+    implementation "com.jakewharton:butterknife:$butterknife_version"
     kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
 
     // Moxy MVP
-    compile "com.arello-mobile:moxy:$moxy_version"
+    implementation "com.arello-mobile:moxy:$moxy_version"
     annotationProcessor "com.arello-mobile:moxy-compiler:$moxy_version"
-    compile "com.arello-mobile:moxy-android:$moxy_version"
-    compile "com.arello-mobile:moxy-app-compat:$moxy_version"
+    implementation "com.arello-mobile:moxy-android:$moxy_version"
+    implementation "com.arello-mobile:moxy-app-compat:$moxy_version"
     kapt "com.arello-mobile:moxy-compiler:$moxy_version"
 
     //Picasso
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     // Anko Commons
-    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
     //DAGGER 2
-    compile "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     //Rx
-    compile "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
 
     //Gson
-    compile 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.google.code.gson:gson:2.8.1'
 
     //RealmAdapters
-    compile 'io.realm:android-adapters:2.1.0'
+    implementation 'io.realm:android-adapters:2.1.1'
 
     //Timber
-    compile "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.jakewharton.timber:timber:$timber_version"
 
     //Retrofit
-    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
-    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    compile "com.squareup.okhttp3:okhttp:$okhttp_version"
-    compile "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 }
 kapt {
     generateStubs = true

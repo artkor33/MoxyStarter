@@ -11,7 +11,8 @@ import timber.log.Timber
  */
 
 class DebugTree : Timber.DebugTree() {
-    override fun log(priority: Int, tag: String?, message: String?, t: Throwable?) {
+
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         if (priority == LogPriority.FILE) {
             super.log(Log.DEBUG, tag, message, t)
         } else {
