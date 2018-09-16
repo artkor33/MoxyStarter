@@ -11,8 +11,5 @@ import android.view.View
  */
 
 abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
     val context: Context = itemView.context
-
-    abstract fun getLayoutResID()
 }
