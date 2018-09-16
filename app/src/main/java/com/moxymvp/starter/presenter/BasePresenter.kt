@@ -1,10 +1,13 @@
 package com.moxymvp.starter.presenter
 
+import android.content.Context
 import android.text.TextUtils
 import com.arellomobile.mvp.MvpPresenter
 import com.getmeet.android.network.error_handling.ApiErrorListener
 import com.getmeet.android.network.error_handling.HttpError
+import com.moxymvp.starter.Preferences
 import com.moxymvp.starter.view.BaseView
+import io.reactivex.disposables.CompositeDisposable
 import io.realm.Realm
 
 
@@ -16,12 +19,14 @@ import io.realm.Realm
 abstract class BasePresenter<T : BaseView> : MvpPresenter<T>(), ApiErrorListener {
 
     private var utilityWrapper: UtilityWrapper = UtilityWrapper()
+    val subscription: CompositeDisposable by lazy { CompositeDisposable() }
 
     val realm: Realm = Realm.getDefaultInstance()
+    val applicationContext: Context
+        get() = utilityWrapper.applicationContext
 
-    fun applicationContext() = utilityWrapper.applicationContext
-
-    fun preferences() = utilityWrapper.preferences
+    val preferences: Preferences
+        get() = utilityWrapper.preferences
 
     override fun onDestroy() {
         realm.close()
