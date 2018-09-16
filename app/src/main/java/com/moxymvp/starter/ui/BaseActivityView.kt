@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.support.design.widget.Snackbar
 import android.view.MenuItem
-import butterknife.ButterKnife
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.moxymvp.starter.R
 import com.moxymvp.starter.view.BaseView
@@ -22,7 +21,6 @@ abstract class BaseActivityView : MvpAppCompatActivity(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResID())
-        ButterKnife.bind(this)
         setupView(savedInstanceState)
     }
 

@@ -7,8 +7,6 @@ import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.moxymvp.starter.R
 import com.moxymvp.starter.view.BaseView
@@ -22,11 +20,9 @@ import org.jetbrains.anko.toast
  */
 
 abstract class BaseFragmentView : MvpAppCompatFragment(), BaseView {
-    private lateinit var unbinder: Unbinder
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(getLayoutResID(), container, false)
-        unbinder = ButterKnife.bind(this, v)
         setupView(savedInstanceState)
         return v
     }
@@ -49,11 +45,6 @@ abstract class BaseFragmentView : MvpAppCompatFragment(), BaseView {
 
     override fun toastLong(resId: Int) {
         activity?.longToast(resId)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        unbinder.unbind()
     }
 
     override fun showNoInternetConnectionError() {

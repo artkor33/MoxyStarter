@@ -3,7 +3,6 @@ package com.moxymvp.starter.view_holder
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import butterknife.ButterKnife
 
 
 /**
@@ -15,11 +14,5 @@ abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
 
     val context: Context = itemView.context
 
-    init {
-        ButterKnife.bind(this, itemView)
-    }
-
     abstract fun getLayoutResID()
-
-
 }
