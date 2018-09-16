@@ -30,6 +30,7 @@ abstract class BasePresenter<T : BaseView> : MvpPresenter<T>(), ApiErrorListener
 
     override fun onDestroy() {
         realm.close()
+        subscription.dispose()
         super.onDestroy()
     }
 
