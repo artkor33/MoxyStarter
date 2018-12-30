@@ -7,6 +7,10 @@ package com.moxymvp.starter
  */
 
 object Consts {
+    object Intents {
+
+    }
+
     object LogTag {
         const val HTTP = "OkHttp"
     }
