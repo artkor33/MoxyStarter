@@ -3,11 +3,11 @@ package com.moxymvp.starter.ui
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
+import com.google.android.material.snackbar.Snackbar
+import com.moxy_mvp.androidx.MvpAppCompatFragment
 import com.moxymvp.starter.R
 import com.moxymvp.starter.view.BaseView
 import org.jetbrains.anko.longToast
@@ -54,7 +54,7 @@ abstract class BaseFragmentView : MvpAppCompatFragment(), BaseView {
 
         val snackBar: Snackbar = Snackbar.make(activity!!.window.decorView.findViewById(android.R.id.content),
                 R.string.msg_error_no_internet_connection, Snackbar.LENGTH_LONG)
-                .setAction(R.string.settings, { showInternetSettingsScreen() })
+                .setAction(R.string.settings) { showInternetSettingsScreen() }
         snackBar.show()
     }
 

@@ -1,23 +1,27 @@
 buildscript {
     ext.versions = [
             'minSdk'           : 21,
-            'compileSdk'       : 27,
+            'compileSdk'       : 28,
 
-            'buildTools'       : '27.0.2',
+            'appCompat'        : '1.0.2',
+            'support'          : '1.0.0',
+            'dynamicAnimation' : '1.0.0',
+            'material'         : '1.0.0',
+            'buildTools'       : '28.0.3',
             'androidPlugin'    : '3.1.4',
             'gms'              : '3.1.0',
-            'kotlin'           : '1.2.70',
+            'kotlin'           : '1.3.11',
             'moxy'             : '1.5.3',
             'dagger'           : '2.7',
             'anko'             : '0.10.1',
-            'timber'           : '4.7.0',
+            'timber'           : '4.7.1',
             'retrofit'         : '2.3.0',
             'rxJava'           : '2.1.7',
-            'rxAndroid'        : '2.0.1',
+            'rxAndroid'        : '2.0.2',
             'rxKotlin'         : '2.0.0',
             'retrofitRxAdapter': '1.0.0',
             'okHttp'           : '3.9.0',
-            'constraintLayout' : '1.1.3',
+            'constraintLayout' : '2.0.0-alpha3',
             'gson'             : '2.8.0',
             'picasso'          : '2.71828',
             'realm'            : '5.4.1',
@@ -30,74 +34,16 @@ buildscript {
             'targetCompat'     : JavaVersion.VERSION_1_8
     ]
 
-    ext.deps = [
-            android  : [
-                    'gradlePlugin': "com.android.tools.build:gradle:${versions.androidPlugin}",
-            ],
-            support  : [
-                    'appCompat'    : "com.android.support:appcompat-v7:${versions.buildTools}",
-                    'recyclerView' : "com.android.support:recyclerview-v7:${versions.buildTools}",
-                    'cardView'     : "com.android.support:cardview-v7:${versions.buildTools}",
-                    'constraintLayout':"com.android.support.constraint:constraint-layout:${versions.constraintLayout}",
-                    'support'       : "com.android.support:support-v4:${versions.buildTools}",
-                    'designSupport': "com.android.support:design:${versions.buildTools}"
-            ],
-            kotlin   : [
-                    'gradlePlugin': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
-                    'stdlib'      : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}",
-            ],
-            anko     : [
-                    'commons': "org.jetbrains.anko:anko-commons:${versions.anko}"
-            ],
-            reactivex: [
-                    'rxJava'   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
-                    'rxAndroid': "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
-                    'rxKotlin' : "io.reactivex.rxjava2:rxkotlin:${versions.rxKotlin}"
-            ],
-            google   : [
-                    'gmsPlugin'      : "com.google.gms:google-services:${versions.gms}",
-                    'dagger'         : "com.google.dagger:dagger:${versions.dagger}",
-                    'daggerProcessor': "com.google.dagger:dagger-compiler:${versions.dagger}",
-                    'gson'           : "com.google.code.gson:gson:${versions.gson}",
-            ],
-            square   : [
-                    'retrofit'         : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
-                    'gsonConverter'    : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
-                    'okhttp'           : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
-                    'picasso'          : "com.squareup.picasso:picasso:${versions.picasso}",
-                    'retrofitRxAdapter': "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
-                    'loggingInterceptor':"com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
-                    'timber'           : "com.jakewharton.timber:timber:${versions.timber}"
-            ],
-            realm    : [
-                    'gradlePlugin': "io.realm:realm-gradle-plugin:${versions.realm}",
-                    'adapters'    : "io.realm:android-adapters:${versions.realmAdapters}"
-            ],
-            moxy     : [
-                    'moxy'               : "com.arello-mobile:moxy:${versions.moxy}",
-                    'annotationProcessor': "com.arello-mobile:moxy-compiler:${versions.moxy}",
-                    'android'            : "com.arello-mobile:moxy-android:${versions.moxy}",
-                    'appCompat'          : "com.arello-mobile:moxy-app-compat:${versions.moxy}",
-                    'kapt'               : "com.arello-mobile:moxy-compiler:${versions.moxy}"
-            ],
-            test     : [
-                    'junit'        : "junit:junit:${versions.junit}",
-                    'atslRunner'   : "com.android.support.test:runner:${versions.atsl}",
-                    'atslRules'    : "com.android.support.test:rules:${versions.atsl}",
-                    'mockitoKotlin': "com.nhaarman:mockito-kotlin:${versions.mockitoKotlin}",
-                    'robolectric'  : "org.robolectric:robolectric:${versions.robolectric}",
-                    'mockWebServer': "com.squareup.okhttp3:mockwebserver:${versions.okHttp}"
-            ]
-    ]
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath deps.android.gradlePlugin
-        classpath deps.google.gmsPlugin
-        classpath deps.kotlin.gradlePlugin
-        classpath deps.realm.gradlePlugin
+
+        classpath "com.android.tools.build:gradle:${versions.androidPlugin}"
+        classpath "com.google.gms:google-services:${versions.gms}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "io.realm:realm-gradle-plugin:${versions.realm}"
     }
 }
 

@@ -3,9 +3,9 @@ package com.moxymvp.starter.ui
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.support.design.widget.Snackbar
 import android.view.MenuItem
-import com.arellomobile.mvp.MvpAppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import com.moxy_mvp.androidx.MvpAppCompatActivity
 import com.moxymvp.starter.R
 import com.moxymvp.starter.view.BaseView
 import org.jetbrains.anko.longToast

@@ -11,7 +11,7 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion versions.compileSdk
-    buildToolsVersion '27.0.3'
+    buildToolsVersion versions.buildTools
     defaultConfig {
         applicationId "com.moxymvp.starter"
         minSdkVersion versions.minSdk
@@ -30,50 +30,51 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation deps.test.junit
-    testImplementation deps.test.mockitoKotlin
-    testImplementation deps.test.robolectric
-    testImplementation deps.test.mockWebServer
 
-    androidTestImplementation deps.test.junit
-    androidTestImplementation deps.test.mockitoKotlin
-    androidTestImplementation deps.test.atslRunner
-    androidTestImplementation deps.test.atslRules
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "com.nhaarman:mockito-kotlin:${versions.mockitoKotlin}"
+    testImplementation "org.robolectric:robolectric:${versions.robolectric}"
+    testImplementation "com.squareup.okhttp3:mockwebserver:${versions.okHttp}"
 
-    implementation deps.support.appCompat
-    implementation deps.support.recyclerView
-    implementation deps.support.cardView
-    implementation deps.support.constraintLayout
-    implementation deps.support.support
-    implementation deps.support.designSupport
+    androidTestImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "com.nhaarman:mockito-kotlin:${versions.mockitoKotlin}"
+    androidTestImplementation "com.android.support.test:runner:${versions.atsl}"
+    androidTestImplementation "com.android.support.test:rules:${versions.atsl}"
 
-    implementation deps.google.dagger
-    kapt deps.google.daggerProcessor
-    implementation deps.google.gson
+    implementation "androidx.appcompat:appcompat:${versions.appCompat}"
+    implementation "androidx.legacy:legacy-support-v4:${versions.support}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
+    implementation "androidx.dynamicanimation:dynamicanimation:${versions.dynamicAnimation}"
+    implementation "com.google.android.material:material:${versions.material}"
 
-    implementation deps.kotlin.stdlib
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
-    implementation deps.reactivex.rxJava
-    implementation deps.reactivex.rxAndroid
-    implementation deps.reactivex.rxKotlin
+    implementation "com.google.code.gson:gson:${versions.gson}"
 
-    implementation deps.square.retrofit
-    implementation deps.square.gsonConverter
-    implementation deps.square.okhttp
-    implementation deps.square.picasso
-    implementation deps.square.retrofitRxAdapter
-    implementation deps.square.loggingInterceptor
-    implementation deps.square.timber
+    implementation "io.reactivex.rxjava2:rxjava:${versions.rxJava}"
+    implementation "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+    implementation "io.reactivex.rxjava2:rxkotlin:${versions.rxKotlin}"
 
-    implementation deps.moxy.moxy
-    annotationProcessor deps.moxy.annotationProcessor
-    implementation deps.moxy.android
-    implementation deps.moxy.appCompat
-    kapt deps.moxy.kapt
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    implementation "com.squareup.okhttp3:okhttp:${versions.okHttp}"
+    implementation "com.squareup.picasso:picasso:${versions.picasso}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}"
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
 
-    implementation deps.realm.adapters
+    implementation "com.arello-mobile:moxy:${versions.moxy}"
+    implementation "com.arello-mobile:moxy-compiler:${versions.moxy}"
+    implementation "com.arello-mobile:moxy-android:${versions.moxy}"
+    implementation "com.arello-mobile:moxy-app-compat:${versions.moxy}"
+    implementation project(':moxy_mvp')
+    kapt "com.arello-mobile:moxy-compiler:${versions.moxy}"
+    annotationProcessor "com.arello-mobile:moxy-compiler:${versions.moxy}"
 
-    implementation deps.anko.commons
+    implementation "io.realm:android-adapters:${versions.realmAdapters}"
+    implementation "org.jetbrains.anko:anko-commons:${versions.anko}"
+
 }
 kapt {
     generateStubs = true

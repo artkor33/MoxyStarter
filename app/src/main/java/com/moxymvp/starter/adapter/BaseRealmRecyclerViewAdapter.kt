@@ -1,12 +1,12 @@
 package com.moxymvp.starter.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.moxymvp.starter.adapter.base.ExtendedRealmRecyclerViewAdapter
 import io.realm.OrderedRealmCollection
 import io.realm.RealmObject
-import io.realm.RealmRecyclerViewAdapter
 
 
 /**
@@ -15,7 +15,7 @@ import io.realm.RealmRecyclerViewAdapter
  */
 
 abstract class BaseRealmRecyclerViewAdapter<T : RealmObject, VH : RecyclerView.ViewHolder>(data: OrderedRealmCollection<T>, autoUpdate: Boolean = true, updateOnModification: Boolean = true)
-    : RealmRecyclerViewAdapter<T, VH>(data, autoUpdate, updateOnModification) {
+    : ExtendedRealmRecyclerViewAdapter<T, VH>(data, autoUpdate, updateOnModification) {
 
     fun buildView(parent: ViewGroup?, viewType: Int): View = LayoutInflater.from(parent!!.context).inflate(viewType, parent, false)
 }

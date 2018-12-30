@@ -1,1 +1,1 @@
-include ':app'
+include ':app', 'moxy_mvp'
